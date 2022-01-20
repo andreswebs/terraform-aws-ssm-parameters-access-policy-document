@@ -10,16 +10,16 @@ Generates an IAM policy document with permissons to access a list of parameters 
 Example:
 
 ```hcl
-module "secrets_access" {
-  source = "github.com/andreswebs/terraform-aws-secrets-access-policy-document"
-  secret_names = [
-    "password",
-    "token",
-    "etc"
+module "params_access" {
+  source = "github.com/andreswebs/terraform-aws-ssm-parameters-access-policy-document"
+  parameter_names = [
+    "/password",
+    "/token",
+    "/something-else/etc"
   ]
 }
 
-## --> use module.secrets_access.json
+## --> use module.params_access.json
 ```
 
 
@@ -28,7 +28,7 @@ module "secrets_access" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_secret_names"></a> [secret\_names](#input\_secret\_names) | List of friendly names of the allowed secrets | `list(string)` | n/a | yes |
+| <a name="input_parameter_names"></a> [parameter\_names](#input\_parameter\_names) | List of names of the allowed SSM parameters | `list(string)` | n/a | yes |
 
 ## Modules
 
@@ -39,8 +39,8 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_json"></a> [json](#output\_json) | The IAM Policy document JSON contents |
-| <a name="output_secret_arns"></a> [secret\_arns](#output\_secret\_arns) | List of allowed secret ARNs |
-| <a name="output_secret_names"></a> [secret\_names](#output\_secret\_names) | List of friendly names of the allowed secrets |
+| <a name="output_parameter_arns"></a> [parameter\_arns](#output\_parameter\_arns) | List of allowed parameter ARNs |
+| <a name="output_parameter_names"></a> [parameter\_names](#output\_parameter\_names) | List of names of the allowed SSM parameters |
 
 ## Providers
 
