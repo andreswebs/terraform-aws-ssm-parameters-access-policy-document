@@ -28,6 +28,7 @@ module "params_access" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_additional_actions"></a> [additional\_actions](#input\_additional\_actions) | List of additional policy actions for the allowed secrets. Default is empty | `list(string)` | `[]` | no |
 | <a name="input_parameter_names"></a> [parameter\_names](#input\_parameter\_names) | List of names of the allowed SSM parameters | `list(string)` | n/a | yes |
 
 ## Modules
@@ -38,6 +39,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_additional_actions"></a> [additional\_actions](#output\_additional\_actions) | List of additional policy actions for the allowed secrets |
 | <a name="output_json"></a> [json](#output\_json) | The IAM Policy document JSON contents |
 | <a name="output_parameter_arns"></a> [parameter\_arns](#output\_parameter\_arns) | List of allowed parameter ARNs |
 | <a name="output_parameter_names"></a> [parameter\_names](#output\_parameter\_names) | List of names of the allowed SSM parameters |

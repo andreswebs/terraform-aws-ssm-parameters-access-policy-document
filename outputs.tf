@@ -12,3 +12,8 @@ output "parameter_names" {
   value = var.parameter_names
   description = "List of names of the allowed SSM parameters"
 }
+
+output "additional_actions" {
+  value = var.additional_actions
+  description = "List of additional policy actions for the allowed secrets"
+}

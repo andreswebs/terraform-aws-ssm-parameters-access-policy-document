@@ -7,17 +7,19 @@ locals {
   param_arns       = [for p in var.parameter_names : "${local.param_arn_prefix}${p}"]
   param_path_arns  = [for p in var.parameter_names : "${local.param_arn_prefix}${p}/*"]
   param_arns_all   = concat(local.param_arns, local.param_path_arns)
+  default_actions = [
+      "ssm:GetParameter",
+      "ssm:GetParameters",
+      "ssm:GetParametersByPath",
+      "ssm:GetParameterHistory",
+  ]
+  ssm_actions = concat(local.default_actions, var.additional_actions)
 }
 
 data "aws_iam_policy_document" "this" {
   statement {
     sid = "AccessParams"
-    actions = [
-      "ssm:GetParameter",
-      "ssm:GetParameters",
-      "ssm:GetParametersByPath",
-      "ssm:GetParameterHistory",
-    ]
+    actions = local.ssm_actions
     resources = local.param_arns_all
   }
 }
